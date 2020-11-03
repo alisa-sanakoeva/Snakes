@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container" align="center">
+    <div class="jumbotron" align="center">
         <h2>გველის დამატება</h2>
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
+            <br>
+            {{ form.species_id.label }} {{ form.species_id }}
             <br>
             {{ form.location.label }} {{ form.location }}
             <br>
             {{ form.date.label }} {{ form.date }}
             <br>
-            {{ form.pic_url.label }} {{ form.pic_url }}
+            {{ form.pic.label }} {{ form.pic }}
             <br>
             {{ form.submit() }}
         </form>

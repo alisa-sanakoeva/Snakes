@@ -1,8 +1,8 @@
-"""pls work
+"""შეტყობინება
 
-Revision ID: 159fd3f9c8af
+Revision ID: 3205ef3fbcb3
 Revises: 
-Create Date: 2020-11-02 17:39:59.028803
+Create Date: 2020-11-03 15:18:38.890427
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '159fd3f9c8af'
+revision = '3205ef3fbcb3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,16 +22,16 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('species', sa.String(), nullable=True),
     sa.Column('geo_name', sa.String(), nullable=True),
-    sa.Column('desc', sa.String(), nullable=True),
-    sa.Column('pic_url', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('geo_name'),
+    sa.UniqueConstraint('species')
     )
     op.create_table('finds',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('species_id', sa.Integer(), nullable=True),
     sa.Column('location', sa.String(), nullable=True),
     sa.Column('date', sa.DATETIME(), nullable=True),
-    sa.Column('pic_url', sa.String(), nullable=True),
+    sa.Column('pic', sa.LargeBinary(), nullable=True),
     sa.ForeignKeyConstraint(['species_id'], ['snakes.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
