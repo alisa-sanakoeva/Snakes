@@ -6,11 +6,13 @@ class Snakes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     species = db.Column(db.String)
     geo_name = db.Column(db.String)
+    pic_url = db.Column(db.String)
     find = db.relationship('Finds', backref="snakes")
 
-    def __init__(self, species, geo_name):
+    def __init__(self, species, geo_name, pic_url):
         self.species = species
         self.geo_name = geo_name
+        self.pic_url = pic_url
 
 class Finds(db.Model):
     __tablename__ = "finds"

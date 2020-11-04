@@ -1,8 +1,8 @@
 """შეტყობინება
 
-Revision ID: 3205ef3fbcb3
+Revision ID: f360c82c0358
 Revises: 
-Create Date: 2020-11-03 15:18:38.890427
+Create Date: 2020-11-04 18:35:52.707256
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3205ef3fbcb3'
+revision = 'f360c82c0358'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,9 +22,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('species', sa.String(), nullable=True),
     sa.Column('geo_name', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('geo_name'),
-    sa.UniqueConstraint('species')
+    sa.Column('pic_url', sa.String(), nullable=True),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('finds',
     sa.Column('id', sa.Integer(), nullable=False),
