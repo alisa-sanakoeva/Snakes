@@ -30,7 +30,7 @@ if __name__ == '__main__':
             ('Zamenis hohenackeri', 'ამიერკავკასიური მცურავი', 'Z_hohenackeri.jpg'),
             ('Zamenis longissimus', 'ესკულაპის მცურავი', 'Z_longissimus.jpg'),
             ('Macrovipera lebetina', 'გიურზა', 'M_lebetina_1.jpg'),
-            ('Vipera transcaucasiana', 'ამიერკავკასიური ცხვირრქოსანი გველგესლა', 'V_transcasucasiana.jpg'),
+            ('Vipera transcaucasiana', 'ამიერკავკასიური ცხვირრქოსანი გველგესლა', 'V_transcaucasiana.jpg'),
             ('Vipera darevskii', 'დარევსკის გველგესლა', 'V_darevski.jpg'),
             ('Vipera dinniki', 'დინიკის გველგესლა', 'V_dinniki.jpg'),
             ('Vipera eriwanensis', 'სომხური ველის გველგესლა', 'V_eriwanensis.jpg'),
