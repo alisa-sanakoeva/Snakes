@@ -16,13 +16,13 @@
         </thead>
         <tbody>
 
-            {% for snake in finds %}
+            {% for find in finds %}
             <tr>
-            <th scope="row">{{ snake.id }}</th>
-            <td> {{ snake.species_id }}</td>
-            <td> {{ snake.location }}</td>
-            <td> {{ snake.date }}</td>
-            <td><img src={{pic}} /></td>
+            <th scope="row">{{ find.id }}</th>
+            <td> {{ find.species_id }}</td>
+            <td> {{ find.location }}</td>
+            <td> {{ find.date }}</td>
+            <td><img class="container" src="{{ url_for('static', filename=find.pic) }}"></td>
         </tr>
             {% endfor %}
 

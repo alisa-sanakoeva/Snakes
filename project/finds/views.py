@@ -2,9 +2,8 @@ from flask import render_template, redirect, url_for, Blueprint, request
 from project import db
 from project.models import Finds, Snakes
 from project.finds.forms import AddFind
-from io import BytesIO
-import base64
-import struct
+from werkzeug.utils import secure_filename
+import os
 
 finds_blueprint = Blueprint('finds',
                               __name__,
@@ -17,10 +16,19 @@ def add_find():
         species_id = form.species_id.data
         location = form.location.data
         date = form.date.data
-        pic = request.files['pic'].read()
-        new_find = Finds(species_id, location, date, pic)
+        filename = secure_filename(form.pic.data.filename)
+        new_find = Finds(species_id, location, date, filename)
         db.session.add(new_find)
         db.session.commit()
+
+        file_path = f"project/static/{filename}"
+        dirname = os.path.dirname(file_path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+
+        form.pic.data.save(file_path)
+
+
         return redirect(url_for('finds.thanks'))
     return render_template('add_find.html', form=form)
 
@@ -32,8 +40,6 @@ def thanks():
 @finds_blueprint.route('/findslist')
 def finds_list():
     finds = Finds.query.all()
-    # image_64_encode = base64.encodebytes(finds[4].pic)
-    # pic = image_64_encode
     return render_template('finds_list.html', finds=finds)
 
 @finds_blueprint.route('/species/<id>')

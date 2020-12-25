@@ -19,8 +19,8 @@ class Finds(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     species_id = db.Column(db.Integer, db.ForeignKey('snakes.id'))
     location = db.Column(db.String)
-    date = db.Column(db.DATETIME)
-    pic = db.Column(db.LargeBinary)
+    date = db.Column(db.DATE)
+    pic = db.Column(db.String)
 
     def __init__(self, species_id, location, date, pic):
         self.species_id = species_id
